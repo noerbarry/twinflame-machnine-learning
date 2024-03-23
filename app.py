@@ -29,26 +29,26 @@ def train_model(df):
     X_encoded = pd.get_dummies(X)
 
     # Bagi data menjadi data latih dan data uji untuk twin flame
-    X_train, X_test, y_train, y_test = train_test_split(X_encoded, y_tf, test_size=0.2, random_state=42)
+    X_train_tf, X_test_tf, y_train_tf, y_test_tf = train_test_split(X_encoded, y_tf, test_size=0.2, random_state=42)
 
     # Inisialisasi model ensemble (Random Forest dan Gradient Boosting)
     rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
     gb_model = GradientBoostingClassifier(n_estimators=100, random_state=42)
 
     # Latih model twin flame
-    rf_model.fit(X_train, y_train)
-    gb_model.fit(X_train, y_train)
+    rf_model.fit(X_train_tf, y_train_tf)
+    gb_model.fit(X_train_tf, y_train_tf)
 
     # Evaluasi model twin flame
-    accuracy_rf = accuracy_score(y_test, rf_model.predict(X_test))
-    accuracy_gb = accuracy_score(y_test, gb_model.predict(X_test))
+    accuracy_rf = accuracy_score(y_test_tf, rf_model.predict(X_test_tf))
+    accuracy_gb = accuracy_score(y_test_tf, gb_model.predict(X_test_tf))
     st.write("Akurasi Model Twin Flame (Random Forest):", accuracy_rf)
     st.write("Akurasi Model Twin Flame (Gradient Boosting):", accuracy_gb)
 
-    return rf_model, gb_model
+    return rf_model, gb_model, X_encoded
 
 # Fungsi untuk memprediksi kemungkinan twin flame berdasarkan input pengguna
-def predict_twin_flame(rf_model, gb_model, X_encoded, user_data):
+def predict_twin_flame(rf_model, gb_model, user_data, X_encoded):
     # Encode input pengguna
     user_encoded = pd.get_dummies(user_data)
 
@@ -80,12 +80,11 @@ def main():
     # Tombol untuk melakukan prediksi
     if st.button("Prediksi Kemungkinan Twin Flame"):
         user_data = {'Usia': usia, 'Jenis_Kelamin': jenis_kelamin, 'Minat': minat, 'Nilai_Pribadi': nilai_pribadi}
-        pred_tf = predict_twin_flame(rf_model, gb_model, X_encoded, user_data)
+        rf_model, gb_model, X_encoded = train_model(df)
+        pred_tf = predict_twin_flame(rf_model, gb_model, user_data, X_encoded)
         if pred_tf is not None:
             st.write("Perkiraan kemungkinan Twin Flame:", pred_tf)
 
 if __name__ == "__main__":
     df = load_data()
-    X_encoded, rf_model, gb_model = train_model(df)
     main()
-
