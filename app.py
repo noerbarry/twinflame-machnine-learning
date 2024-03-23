@@ -73,9 +73,10 @@ def main():
     st.subheader("Masukkan data pengguna:")
     usia = st.slider("Usia", min_value=1, max_value=100, value=30)
     jenis_kelamin = st.selectbox("Jenis Kelamin", df['Jenis_Kelamin'].unique())
-    minat = st.selectbox("Minat", df['Minat'].unique())
-    nilai_pribadi = st.selectbox("Nilai Pribadi", df['Nilai_Pribadi'].unique())
-    mbti = st.selectbox("MBTI", df['MBTI'].unique())
+    # minat = st.selectbox("Minat", df['Minat'].unique())
+    minat = st.selectbox("Minat", df['Minat'])
+    nilai_pribadi = st.selectbox("Nilai Pribadi", df['Nilai_Pribadi'])
+    mbti = st.selectbox("MBTI", df['MBTI'])
 
     user_data = {'Usia': usia, 'Jenis_Kelamin': jenis_kelamin, 'Minat': minat, 'Nilai_Pribadi': nilai_pribadi, 'MBTI': mbti}
 
