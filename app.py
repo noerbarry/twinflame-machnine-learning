@@ -54,11 +54,13 @@ def predict_twin_flame(model, user_data):
 # Fungsi untuk interpretasi hasil prediksi
 def interpret_prediction(probability):
     if probability >= 0.8:
-        return "Anda memiliki kemungkinan tinggi untuk memiliki Twin Flame. Anda mungkin merasa kuat tarik menarik secara spiritual dan emosional."
-    elif probability >= 0.5:
-        return "Anda memiliki kemungkinan moderat untuk memiliki Twin Flame. Mungkin ada hubungan yang dalam dan bermakna dalam hidup Anda."
+        return "Anda memiliki kemungkinan tinggi untuk memiliki Twin Flame. Ini menunjukkan bahwa Anda mungkin merasakan tarikan yang kuat secara spiritual dan emosional, serta memiliki ikatan yang mendalam dengan seseorang yang potensial menjadi Twin Flame Anda."
+    elif probability >= 0.6:
+        return "Anda memiliki kemungkinan sedang untuk memiliki Twin Flame. Meskipun tidak sekuat kemungkinan tinggi, ini menunjukkan bahwa Anda masih memiliki potensi untuk merasakan ikatan yang mendalam dengan seseorang, dan mungkin bernilai untuk menjelajahi hubungan ini lebih lanjut."
+    elif probability >= 0.4:
+        return "Anda memiliki kemungkinan rendah untuk memiliki Twin Flame. Meskipun begitu, ini tidak menutup kemungkinan untuk menemukan hubungan yang bermakna dan istimewa di masa depan. Teruslah terbuka terhadap peluang yang ada."
     else:
-        return "Anda memiliki kemungkinan rendah untuk memiliki Twin Flame. Tetapi itu tidak berarti Anda tidak akan menemukan hubungan yang istimewa di masa depan."
+        return "Anda memiliki kemungkinan sangat rendah untuk memiliki Twin Flame. Namun, ingatlah bahwa kebahagiaan dan hubungan yang memuaskan tidak hanya tergantung pada konsep Twin Flame. Tetaplah terbuka terhadap berbagai kemungkinan dan nikmati perjalanan Anda dalam mencari cinta dan hubungan yang bermakna."
 
 def main():
     st.title("Deteksi Kemungkinan Twin Flame")
