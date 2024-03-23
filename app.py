@@ -47,8 +47,8 @@ def train_model(df):
 
     return rf_model, gb_model
 
- # Fungsi untuk memprediksi kemungkinan twin flame berdasarkan input pengguna
-def predict_twin_flame(rf_model, gb_model, user_data):
+# Fungsi untuk memprediksi kemungkinan twin flame berdasarkan input pengguna
+def predict_twin_flame(rf_model, gb_model, X_encoded, user_data):
     # Encode input pengguna
     user_encoded = pd.get_dummies(user_data)
 
@@ -66,7 +66,6 @@ def predict_twin_flame(rf_model, gb_model, user_data):
     pred_tf = (pred_rf + pred_gb) / 2
     return pred_tf
 
-
 # Fungsi utama aplikasi Streamlit
 def main():
     st.title("Deteksi Twin Flame dengan Ensemble Learning")
@@ -81,10 +80,12 @@ def main():
     # Tombol untuk melakukan prediksi
     if st.button("Prediksi Kemungkinan Twin Flame"):
         user_data = {'Usia': usia, 'Jenis_Kelamin': jenis_kelamin, 'Minat': minat, 'Nilai_Pribadi': nilai_pribadi}
-        rf_model, gb_model = train_model(df)
-        pred_tf = predict_twin_flame(rf_model, gb_model, user_data)
-        st.write("Perkiraan kemungkinan Twin Flame:", pred_tf)
+        pred_tf = predict_twin_flame(rf_model, gb_model, X_encoded, user_data)
+        if pred_tf is not None:
+            st.write("Perkiraan kemungkinan Twin Flame:", pred_tf)
 
 if __name__ == "__main__":
     df = load_data()
+    X_encoded, rf_model, gb_model = train_model(df)
     main()
+
