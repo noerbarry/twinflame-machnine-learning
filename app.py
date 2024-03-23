@@ -41,10 +41,10 @@ def train_model(df):
 # Fungsi untuk memprediksi kemungkinan twin flame berdasarkan input pengguna
 def predict_twin_flame(model, user_data):
     label_encoder = LabelEncoder()
-    user_data['Jenis_Kelamin'] = label_encoder.fit_transform([user_data['Jenis_Kelamin']])
-    user_data['Minat'] = label_encoder.fit_transform([user_data['Minat']])
-    user_data['Nilai_Pribadi'] = label_encoder.fit_transform([user_data['Nilai_Pribadi']])
-    user_data['MBTI'] = label_encoder.fit_transform([user_data['MBTI']])
+    user_data['Jenis_Kelamin'] = label_encoder.transform([user_data['Jenis_Kelamin']])
+    user_data['Minat'] = label_encoder.transform([user_data['Minat']])
+    user_data['Nilai_Pribadi'] = label_encoder.transform([user_data['Nilai_Pribadi']])
+    user_data['MBTI'] = label_encoder.transform([user_data['MBTI']])
 
     user_df = pd.DataFrame(user_data)
 
@@ -72,10 +72,10 @@ def main():
     # Input data pengguna
     st.subheader("Masukkan data pengguna:")
     usia = st.slider("Usia", min_value=1, max_value=100, value=30)
-    jenis_kelamin = st.selectbox("Jenis Kelamin", df['Jenis_Kelamin'].unique())
-    minat = st.selectbox("Minat", df['Minat'].unique())
-    nilai_pribadi = st.selectbox("Nilai Pribadi", df['Nilai_Pribadi'].unique())
-    mbti = st.selectbox("MBTI", df['MBTI'].unique())
+    jenis_kelamin = st.radio("Jenis Kelamin", ['Laki-laki', 'Perempuan'])
+    minat = st.selectbox("Minat", ['Olahraga', 'Seni', 'Musik', 'Kuliner', 'Pendidikan', 'Teknologi'])
+    nilai_pribadi = st.radio("Nilai Pribadi", ['Baik', 'Buruk'])
+    mbti = st.selectbox("MBTI", ['INFJ', 'ENTP', 'INTJ', 'INTP', 'ENFJ', 'INFP', 'ENFP', 'INTJ'])
 
     user_data = {'Usia': usia, 'Jenis_Kelamin': jenis_kelamin, 'Minat': minat, 'Nilai_Pribadi': nilai_pribadi, 'MBTI': mbti}
 
