@@ -10,6 +10,7 @@ def load_data():
         'Usia': [25, 30, 28, 35, 23, 40, 22, 27],
         'Jenis_Kelamin': ['Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan'],
         'Minat': ['Olahraga', 'Seni', 'Seni', 'Olahraga', 'Seni', 'Olahraga', 'Olahraga', 'Seni'],
+        'Minat_Kategori': ['Aktivitas Fisik', 'Pengembangan Diri', 'Pengembangan Diri', 'Aktivitas Fisik', 'Kreativitas', 'Aktivitas Fisik', 'Aktivitas Fisik', 'Kreativitas'],
         'Nilai_Pribadi': ['Baik', 'Baik', 'Baik', 'Baik', 'Buruk', 'Buruk', 'Buruk', 'Baik'],
         'MBTI': ['ISTJ', 'ESFJ', 'INTJ', 'ENTP', 'ISFJ', 'ENFP', 'ISTP', 'ESTJ'],
         'Twin_Flame': [1, 0, 1, 0, 1, 0, 1, 0]
@@ -19,13 +20,13 @@ def load_data():
 
 # Fungsi untuk melatih model
 def train_model(df):
-    X = df[['Usia', 'Jenis_Kelamin', 'Minat', 'Nilai_Pribadi', 'MBTI']]
+    X = df[['Usia', 'Jenis_Kelamin', 'Minat_Kategori', 'Nilai_Pribadi', 'MBTI']]
     y = df['Twin_Flame']
     
     # Encode variabel kategorikal
     label_encoder = LabelEncoder()
     X['Jenis_Kelamin'] = label_encoder.fit_transform(X['Jenis_Kelamin'])
-    X['Minat'] = label_encoder.fit_transform(X['Minat'])
+    X['Minat_Kategori'] = label_encoder.fit_transform(X['Minat_Kategori'])
     X['Nilai_Pribadi'] = label_encoder.fit_transform(X['Nilai_Pribadi'])
     X['MBTI'] = label_encoder.fit_transform(X['MBTI'])
 
@@ -42,7 +43,7 @@ def train_model(df):
 def predict_twin_flame(model, user_data):
     label_encoder = LabelEncoder()
     user_data['Jenis_Kelamin'] = label_encoder.fit_transform([user_data['Jenis_Kelamin']])
-    user_data['Minat'] = label_encoder.fit_transform([user_data['Minat']])
+    user_data['Minat_Kategori'] = label_encoder.fit_transform([user_data['Minat_Kategori']])
     user_data['Nilai_Pribadi'] = label_encoder.fit_transform([user_data['Nilai_Pribadi']])
     user_data['MBTI'] = label_encoder.fit_transform([user_data['MBTI']])
 
@@ -73,11 +74,11 @@ def main():
     st.subheader("Masukkan data pengguna:")
     usia = st.slider("Usia", min_value=1, max_value=100, value=30)
     jenis_kelamin = st.selectbox("Jenis Kelamin", ['Laki-laki', 'Perempuan'])
-    minat = st.selectbox("Minat", ['Olahraga', 'Seni'])
+    minat_kategori = st.selectbox("Minat Kategori", ['Aktivitas Fisik', 'Pengembangan Diri', 'Kreativitas'])
     nilai_pribadi = st.selectbox("Nilai Pribadi", ['Baik', 'Buruk'])
     mbti = st.text_input("MBTI (Myers-Briggs Type Indicator)")
 
-    user_data = {'Usia': usia, 'Jenis_Kelamin': jenis_kelamin, 'Minat': minat, 'Nilai_Pribadi': nilai_pribadi, 'MBTI': mbti}
+    user_data = {'Usia': usia, 'Jenis_Kelamin': jenis_kelamin, 'Minat_Kategori': minat_kategori, 'Nilai_Pribadi': nilai_pribadi, 'MBTI': mbti}
 
     # Tombol untuk melakukan prediksi
     if st.button("Prediksi Kemungkinan Twin Flame"):
