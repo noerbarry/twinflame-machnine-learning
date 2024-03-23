@@ -64,19 +64,22 @@ def predict_twin_flame(rf_model, gb_model, user_data):
 def main():
     st.title("Deteksi Twin Flame dengan Ensemble Learning")
 
-    # Muat data dan latih model
-    df = load_data()
-    rf_model, gb_model = train_model(df)
-
     # Input data pengguna
-    user_data = st.text_input("Masukkan data pengguna (Usia, Jenis Kelamin, Minat, Nilai Pribadi) dengan format: 25,Laki-laki,Olahraga,Baik")
+    st.subheader("Masukkan data pengguna:")
+    usia = st.text_input("Usia")
+    jenis_kelamin = st.selectbox("Jenis Kelamin", ['Laki-laki', 'Perempuan'])
+    minat = st.selectbox("Minat", ['Olahraga', 'Seni'])
+    nilai_pribadi = st.selectbox("Nilai Pribadi", ['Baik', 'Buruk'])
 
     # Tombol untuk melakukan prediksi
     if st.button("Prediksi Kemungkinan Twin Flame"):
-        if user_data is not None:
-            user_data = pd.DataFrame([user_data.split(',')], columns=['Usia', 'Jenis_Kelamin', 'Minat', 'Nilai_Pribadi'])
-            pred_tf = predict_twin_flame(rf_model, gb_model, user_data)
-            st.write("Perkiraan kemungkinan Twin Flame:", pred_tf)
+        user_data = {'Usia': usia, 'Jenis_Kelamin': jenis
+
+_kelamin, 'Minat': minat, 'Nilai_Pribadi': nilai_pribadi}
+        rf_model, gb_model = train_model(df)
+        pred_tf = predict_twin_flame(rf_model, gb_model, user_data)
+        st.write("Perkiraan kemungkinan Twin Flame:", pred_tf)
 
 if __name__ == "__main__":
+    df = load_data()
     main()
