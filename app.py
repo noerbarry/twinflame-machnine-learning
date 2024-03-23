@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
 # Fungsi untuk memuat data tentang pengguna dan kemungkinan twin flame
@@ -17,7 +16,7 @@ def load_data():
     df = pd.DataFrame(data)
     return df
 
-# Fungsi untuk melatih model ensemble
+# Fungsi untuk melatih model Random Forest
 def train_model(df):
     X = df[['Usia', 'Jenis_Kelamin', 'Minat', 'Nilai_Pribadi', 'MBTI']]  # Fitur-fitur
     y_tf = df['Twin_Flame']  # Target Twin Flame
@@ -25,27 +24,18 @@ def train_model(df):
     # One-hot encode variabel kategorikal
     X_encoded = pd.get_dummies(X)
 
-    # Bagi data menjadi data latih dan data uji untuk twin flame
-    X_train, X_test, y_train, y_test = train_test_split(X_encoded, y_tf, test_size=0.2, random_state=42)
-
-    # Inisialisasi model ensemble (Random Forest)
+    # Inisialisasi dan latih model
     rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
-
-    # Latih model twin flame
-    rf_model.fit(X_train, y_train)
-
-    # Evaluasi model twin flame
-    accuracy_rf = accuracy_score(y_test, rf_model.predict(X_test))
-    st.write("Akurasi Model Twin Flame (Random Forest):", accuracy_rf)
+    rf_model.fit(X_encoded, y_tf)
 
     return rf_model
 
 # Fungsi untuk memprediksi kemungkinan twin flame berdasarkan input pengguna
 def predict_twin_flame(rf_model, user_data):
-    # One-hot encode input pengguna
+    # Encode input pengguna
     user_encoded = pd.get_dummies(user_data)
 
-    # Lakukan prediksi menggunakan model
+    # Prediksi kemungkinan twin flame
     pred_tf = rf_model.predict_proba(user_encoded)[0][1]
     return pred_tf
 
@@ -53,26 +43,25 @@ def predict_twin_flame(rf_model, user_data):
 def main():
     st.title("Deteksi Twin Flame dengan Ensemble Learning")
 
+    # Load data
+    df = load_data()
+
+    # Train model
+    rf_model = train_model(df)
+
     # Input data pengguna
     st.subheader("Masukkan data pengguna:")
-    usia = st.text_input("Usia")
+    usia = st.number_input("Usia", min_value=0, max_value=120, value=30)
     jenis_kelamin = st.selectbox("Jenis Kelamin", ['Laki-laki', 'Perempuan'])
     minat = st.selectbox("Minat", ['Olahraga', 'Seni'])
     nilai_pribadi = st.selectbox("Nilai Pribadi", ['Baik', 'Buruk'])
-    mbti_types = ['INTJ', 'INTP', 'ENTJ', 'ENTP', 'INFJ', 'INFP', 'ENFJ', 'ENFP', 'ISTJ', 'ISFJ', 'ESTJ', 'ESFJ', 'ISTP', 'ISFP', 'ESTP', 'ESFP']
-    selected_mbti = st.selectbox("Pilih Jenis Kepribadian MBTI", mbti_types)
+    mbti = st.selectbox("MBTI", ['INTJ', 'INFP', 'ENTJ', 'ENFP', 'INFJ', 'ISTP', 'ESTP', 'ISFJ'])
 
     # Tombol untuk melakukan prediksi
     if st.button("Prediksi Kemungkinan Twin Flame"):
-        user_data = {'Usia': usia, 
-                     'Jenis_Kelamin': jenis_kelamin, 
-                     'Minat': minat, 
-                     'Nilai_Pribadi': nilai_pribadi, 
-                     'MBTI': selected_mbti}
-        rf_model = train_model(df)
+        user_data = {'Usia': usia, 'Jenis_Kelamin': jenis_kelamin, 'Minat': minat, 'Nilai_Pribadi': nilai_pribadi, 'MBTI': mbti}
         pred_tf = predict_twin_flame(rf_model, user_data)
         st.write("Perkiraan kemungkinan Twin Flame:", pred_tf)
 
 if __name__ == "__main__":
-    df = load_data()
     main()
