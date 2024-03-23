@@ -11,7 +11,6 @@ def load_data():
         'Jenis_Kelamin': ['Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan'],
         'Minat': ['Olahraga', 'Seni', 'Seni', 'Olahraga', 'Seni', 'Olahraga', 'Olahraga', 'Seni'],
         'Nilai_Pribadi': ['Baik', 'Baik', 'Baik', 'Baik', 'Buruk', 'Buruk', 'Buruk', 'Baik'],
-        'MBTI': ['INFJ', 'ENTP', 'INTJ', 'INTP', 'ENFJ', 'INFP', 'ENFP', 'INTJ'],
         'Twin_Flame': [1, 0, 1, 0, 1, 0, 1, 0]
     }
     df = pd.DataFrame(data)
@@ -19,7 +18,7 @@ def load_data():
 
 # Fungsi untuk melatih model
 def train_model(df):
-    X = df[['Usia', 'Jenis_Kelamin', 'Minat', 'Nilai_Pribadi', 'MBTI']]
+    X = df[['Usia', 'Jenis_Kelamin', 'Minat', 'Nilai_Pribadi']]
     y = df['Twin_Flame']
     
     # Encode variabel kategorikal
@@ -27,7 +26,6 @@ def train_model(df):
     X['Jenis_Kelamin'] = label_encoder.fit_transform(X['Jenis_Kelamin'])
     X['Minat'] = label_encoder.fit_transform(X['Minat'])
     X['Nilai_Pribadi'] = label_encoder.fit_transform(X['Nilai_Pribadi'])
-    X['MBTI'] = label_encoder.fit_transform(X['MBTI'])
 
     # Train-test split
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -44,7 +42,6 @@ def predict_twin_flame(model, user_data):
     user_data['Jenis_Kelamin'] = label_encoder.fit_transform([user_data['Jenis_Kelamin']])
     user_data['Minat'] = label_encoder.fit_transform([user_data['Minat']])
     user_data['Nilai_Pribadi'] = label_encoder.fit_transform([user_data['Nilai_Pribadi']])
-    user_data['MBTI'] = label_encoder.fit_transform([user_data['MBTI']])
 
     user_df = pd.DataFrame(user_data)
 
@@ -72,12 +69,11 @@ def main():
     # Input data pengguna
     st.subheader("Masukkan data pengguna:")
     usia = st.slider("Usia", min_value=1, max_value=100, value=30)
-    jenis_kelamin = st.selectbox("Jenis Kelamin", df['Jenis_Kelamin'].unique())
-    minat = st.selectbox("Minat", df['Minat'].unique())
-    nilai_pribadi = st.selectbox("Nilai Pribadi", df['Nilai_Pribadi'].unique())
-    mbti = st.selectbox("MBTI", df['MBTI'].unique())
+    jenis_kelamin = st.selectbox("Jenis Kelamin", ['Laki-laki', 'Perempuan'])
+    minat = st.selectbox("Minat", df['Minat'].unique().tolist())  # Ambil opsi minat dari variabel data
+    nilai_pribadi = st.selectbox("Nilai Pribadi", ['Baik', 'Buruk'])
 
-    user_data = {'Usia': usia, 'Jenis_Kelamin': jenis_kelamin, 'Minat': minat, 'Nilai_Pribadi': nilai_pribadi, 'MBTI': mbti}
+    user_data = {'Usia': usia, 'Jenis_Kelamin': jenis_kelamin, 'Minat': minat, 'Nilai_Pribadi': nilai_pribadi}
 
     # Tombol untuk melakukan prediksi
     if st.button("Prediksi Kemungkinan Twin Flame"):
