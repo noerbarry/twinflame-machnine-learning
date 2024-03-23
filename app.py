@@ -11,11 +11,10 @@ def load_data():
         'Jenis_Kelamin': ['Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan'],
         'Minat': ['Olahraga', 'Seni', 'Seni', 'Olahraga', 'Seni', 'Olahraga', 'Olahraga', 'Seni'],
         'Nilai_Pribadi': ['Baik', 'Baik', 'Baik', 'Baik', 'Buruk', 'Buruk', 'Buruk', 'Baik'],
-        'MBTI': ['INFJ', 'ENTP', 'INTJ', 'INTP', 'ENFJ', 'INFP', 'ENFP', 'INTJ'],
-        'Twin_Flame': [1, 0, 1, 0, 1, 0, 1, 0]
+        'MBTI': ['INFJ', 'ENTP', 'INTJ', 'INTP', 'ENFJ', 'INFP', 'ENFP', 'INTJ']
     }
     df = pd.DataFrame(data)
-    return df
+    return df[['Usia', 'Jenis_Kelamin', 'Minat', 'Nilai_Pribadi', 'MBTI']]
 
 # Fungsi untuk melatih model
 def train_model(df):
@@ -73,10 +72,9 @@ def main():
     st.subheader("Masukkan data pengguna:")
     usia = st.slider("Usia", min_value=1, max_value=100, value=30)
     jenis_kelamin = st.selectbox("Jenis Kelamin", df['Jenis_Kelamin'].unique())
-    # minat = st.selectbox("Minat", df['Minat'].unique())
     minat = st.selectbox("Minat", df['Minat'])
-    nilai_pribadi = st.selectbox("Nilai Pribadi", df['Nilai_Pribadi'])
-    mbti = st.selectbox("MBTI", df['MBTI'])
+    nilai_pribadi = st.selectbox("Nilai Pribadi", df['Nilai_Pribadi'].unique())
+    mbti = st.selectbox("MBTI", df['MBTI'].unique())
 
     user_data = {'Usia': usia, 'Jenis_Kelamin': jenis_kelamin, 'Minat': minat, 'Nilai_Pribadi': nilai_pribadi, 'MBTI': mbti}
 
