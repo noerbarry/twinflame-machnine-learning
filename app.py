@@ -10,9 +10,17 @@ def load_data():
         'Usia': [25, 30, 28, 35, 23, 40, 22, 27],
         'Jenis_Kelamin': ['Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan'],
         'Minat': ['Olahraga', 'Seni', 'Seni', 'Olahraga', 'Seni', 'Olahraga', 'Olahraga', 'Seni'],
-        'Minat_Kategori': ['Aktivitas Fisik', 'Pengembangan Diri', 'Pengembangan Diri', 'Aktivitas Fisik', 'Kreativitas', 'Aktivitas Fisik', 'Aktivitas Fisik', 'Kreativitas'],
         'Nilai_Pribadi': ['Baik', 'Baik', 'Baik', 'Baik', 'Buruk', 'Buruk', 'Buruk', 'Baik'],
-        'MBTI': ['ISTJ', 'ESFJ', 'INTJ', 'ENTP', 'ISFJ', 'ENFP', 'ISTP', 'ESTJ'],
+        'Kesamaan_Minat': ['Tidak', 'Iya', 'Iya', 'Tidak', 'Iya', 'Tidak', 'Tidak', 'Iya'],
+        'Kesesuaian_Nilai': ['Tidak', 'Iya', 'Iya', 'Tidak', 'Iya', 'Tidak', 'Tidak', 'Iya'],
+        'Ketertarikan_Emosional': ['Iya', 'Tidak', 'Iya', 'Tidak', 'Iya', 'Tidak', 'Iya', 'Tidak'],
+        'Kesamaan_Visi_Tujuan': ['Iya', 'Tidak', 'Tidak', 'Iya', 'Tidak', 'Tidak', 'Iya', 'Tidak'],
+        'Kesesuaian_Kepribadian': ['Iya', 'Tidak', 'Iya', 'Tidak', 'Iya', 'Tidak', 'Iya', 'Tidak'],
+        'Kesesuaian_Spiritual': ['Iya', 'Tidak', 'Iya', 'Tidak', 'Iya', 'Tidak', 'Iya', 'Tidak'],
+        'Kesesuaian_Komunikasi': ['Iya', 'Tidak', 'Iya', 'Tidak', 'Iya', 'Tidak', 'Iya', 'Tidak'],
+        'Keterlibatan_Sosial': ['Iya', 'Tidak', 'Tidak', 'Iya', 'Tidak', 'Tidak', 'Iya', 'Tidak'],
+        'Resolusi_Konflik': ['Iya', 'Tidak', 'Iya', 'Tidak', 'Iya', 'Tidak', 'Iya', 'Tidak'],
+        'Kesesuaian_Kehidupan_Praktis': ['Iya', 'Tidak', 'Iya', 'Tidak', 'Iya', 'Tidak', 'Iya', 'Tidak'],
         'Twin_Flame': [1, 0, 1, 0, 1, 0, 1, 0]
     }
     df = pd.DataFrame(data)
