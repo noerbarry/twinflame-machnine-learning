@@ -47,18 +47,25 @@ def train_model(df):
 
     return rf_model, gb_model
 
-# Fungsi untuk memprediksi kemungkinan twin flame berdasarkan input pengguna
+ # Fungsi untuk memprediksi kemungkinan twin flame berdasarkan input pengguna
 def predict_twin_flame(rf_model, gb_model, user_data):
     # Encode input pengguna
     user_encoded = pd.get_dummies(user_data)
 
+    # Periksa apakah fitur yang dimasukkan cocok dengan fitur yang digunakan saat melatih model
+    if set(user_encoded.columns) != set(X_encoded.columns):
+        missing_features = set(X_encoded.columns) - set(user_encoded.columns)
+        st.error(f"Data yang dimasukkan tidak lengkap, fitur yang hilang: {missing_features}")
+        return None
+
     # Lakukan prediksi menggunakan model
-    pred_rf = rf_model.predict_proba(user_encoded)[0][1]
-    pred_gb = gb_model.predict_proba(user_encoded)[0][1]
+    pred_rf = rf_model.predict_proba(user_encoded)[:, 1]
+    pred_gb = gb_model.predict_proba(user_encoded)[:, 1]
 
     # Ambil rata-rata probabilitas dari kedua model
     pred_tf = (pred_rf + pred_gb) / 2
     return pred_tf
+
 
 # Fungsi utama aplikasi Streamlit
 def main():
