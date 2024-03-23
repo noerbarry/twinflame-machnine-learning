@@ -69,12 +69,12 @@ def main():
     rf_model, gb_model = train_model(df)
 
     # Input data pengguna
-    user_data = st.sidebar.text_input("Masukkan data pengguna:")
-    user_data = pd.DataFrame([user_data.split(',')], columns=['Usia', 'Jenis_Kelamin', 'Minat', 'Nilai_Pribadi'])
+    user_data = st.text_input("Masukkan data pengguna (Usia, Jenis Kelamin, Minat, Nilai Pribadi) dengan format: 25,Laki-laki,Olahraga,Baik")
 
     # Tombol untuk melakukan prediksi
-    if st.sidebar.button("Prediksi Kemungkinan Twin Flame"):
+    if st.button("Prediksi Kemungkinan Twin Flame"):
         if user_data is not None:
+            user_data = pd.DataFrame([user_data.split(',')], columns=['Usia', 'Jenis_Kelamin', 'Minat', 'Nilai_Pribadi'])
             pred_tf = predict_twin_flame(rf_model, gb_model, user_data)
             st.write("Perkiraan kemungkinan Twin Flame:", pred_tf)
 
