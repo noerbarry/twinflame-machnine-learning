@@ -77,8 +77,10 @@ def main():
 
 _kelamin, 'Minat': minat, 'Nilai_Pribadi': nilai_pribadi}
         rf_model, gb_model = train_model(df)
+        user_data = {'Usia': usia, 'Jenis_Kelamin': jenis_kelamin, 'Minat': minat, 'Nilai_Pribadi': nilai_pribadi}
         pred_tf = predict_twin_flame(rf_model, gb_model, user_data)
         st.write("Perkiraan kemungkinan Twin Flame:", pred_tf)
+
 
 if __name__ == "__main__":
     df = load_data()
