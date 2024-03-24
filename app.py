@@ -17,6 +17,7 @@ def load_data():
 
     df = pd.DataFrame(data)
     return df
+
     
 # Fungsi untuk melatih model
 def train_model(df):
