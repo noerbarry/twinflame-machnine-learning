@@ -16,6 +16,8 @@ def load_data():
     }
 
     df = pd.DataFrame(data)
+    # Menambahkan minat baru
+    df['Minat'] = ['Olahraga', 'Seni', 'Seni', 'Olahraga', 'Seni', 'Olahraga', 'Olahraga', 'Seni', 'Membaca', 'Musik', 'Menulis', 'Melukis']
     return df
 
 # Fungsi untuk melatih model
