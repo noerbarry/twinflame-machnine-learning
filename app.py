@@ -9,7 +9,7 @@ def load_data():
     data = {
     'Usia': [25, 30, 28, 35, 23, 40, 22, 27],
     'Jenis_Kelamin': ['Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan'],
-    'Minat': ['Olahraga', 'Seni', 'Seni', 'Olahraga', 'Seni', 'Olahraga', 'Olahraga', 'Seni', 'Musik', 'Pendidikan', 'Teknologi', 'Pertanian', 'Desain', 'Kuliner', 'Mode', 'Bisnis', 'Kesehatan', 'Fotografi', 'Perjalanan', 'Sastra', 'Hiburan', 'Sains', 'Pariwisata', 'Keuangan', 'Politik', 'Kerajinan', 'Otomotif', 'Kepemimpinan', 'Hukum', 'Sosial', 'Lingkungan', 'Sejarah', 'Agama', 'Teknik', 'Psikologi', 'Pengembangan Diri', 'Kewirausahaan', 'Kesejahteraan', 'Film', 'Komunikasi', 'Penelitian', 'Pemasaran', 'Seni Bela Diri', 'Penulisan', 'Ilmu Komputer', 'Riset', 'Keseimbangan', 'Kerjasama'],
+    'Minat': ['Olahraga', 'Seni', 'Seni', 'Olahraga', 'Seni', 'Olahraga', 'Olahraga', 'Seni'],
     'Nilai_Pribadi': ['Baik', 'Baik', 'Baik', 'Baik', 'Buruk', 'Buruk', 'Buruk', 'Baik'],
     'MBTI': ['INFJ', 'ENTP', 'INTJ', 'INTP', 'ENFJ', 'INFP', 'ENFP', 'INTJ'],
     'Twin_Flame': [1, 0, 1, 0, 1, 0, 1, 0]
