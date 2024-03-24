@@ -8,7 +8,7 @@ from sklearn.preprocessing import LabelEncoder
 st.beta_set_page_config(footer="")
 
 # Add your app content here
-st.write("pabarstudio")
+st.write("Welcome to My Streamlit App!")
 
 # Fungsi untuk memuat data tentang pengguna dan kemungkinan twin flame
 def load_data():
