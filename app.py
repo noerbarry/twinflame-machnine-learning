@@ -14,9 +14,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Add your app content here
-st.write("Welcome to My Streamlit App!")
-
 # Fungsi untuk memuat data tentang pengguna dan kemungkinan twin flame
 def load_data():
     data = {
@@ -136,3 +133,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# Add your app content here
+st.write("Welcome to My Streamlit App!")
+
+
