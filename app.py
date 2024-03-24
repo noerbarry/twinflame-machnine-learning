@@ -135,10 +135,7 @@ if __name__ == "__main__":
     main()
 
 # Add your app content here
-
-
-
-st.markdown('<a href="https://www.streamlit.io/" target="_blank">Made with Streamlit</a>')
+st.write("pabarstudio ai")
 
  
 
