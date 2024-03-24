@@ -135,7 +135,11 @@ if __name__ == "__main__":
     main()
 
 # Add your app content here
-st.markdown('<footer style="text-align:center;"><a href="https://trakteer.id/pabar_studio/tip" target="_blank">pabarstudio</a></footer>', unsafe_allow_html=True)
 
+
+
+st.write('<a href="https://www.streamlit.io/" target="_blank">Made with Streamlit</a>')
+
+ 
 
 
