@@ -4,8 +4,19 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 
-# Remove the "Made in Streamlit" watermark
-st.beta_set_page_config(footer="")
+# Add custom CSS to hide the Streamlit footer
+st.markdown(
+    """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Add your app content here
+st.write("Welcome to My Streamlit App!")
 
   
 # Fungsi untuk memuat data tentang pengguna dan kemungkinan twin flame
