@@ -4,6 +4,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 
+# Display the logo image
+st.image(https://i0.wp.com/mindeasy.com/wp-content/uploads/2023/05/Introduction-to-Twin-Flames.jpg
+", width=200)  # Adjust the width as needed
+
 # Fungsi untuk memuat data tentang pengguna dan kemungkinan twin flame
 def load_data():
     data = {
