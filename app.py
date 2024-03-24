@@ -135,7 +135,6 @@ if __name__ == "__main__":
     main()
 
 # Add your app content here
-st.write("Welcome to Twinflame App!")
 st.markdown('<footer style="text-align:center;"><a href="https://trakteer.id/pabar_studio/tip" target="_blank">pabarstudio</a></footer>', unsafe_allow_html=True)
 
 
