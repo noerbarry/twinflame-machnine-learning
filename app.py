@@ -14,6 +14,10 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+# Add your app content here
+st.write("pabarstudio ai")
+
+
 # Fungsi untuk memuat data tentang pengguna dan kemungkinan twin flame
 def load_data():
     data = {
@@ -133,10 +137,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# Add your app content here
-st.write("pabarstudio ai")
-
  
 
 
