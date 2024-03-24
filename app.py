@@ -138,7 +138,7 @@ if __name__ == "__main__":
 
 
 
-st.write("<a href="https://www.streamlit.io/" target="_blank">Made with Streamlit</a>")
+st.markdown('<a href="https://www.streamlit.io/" target="_blank">Made with Streamlit</a>')
 
  
 
