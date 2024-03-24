@@ -53,14 +53,46 @@ def predict_twin_flame(model, user_data):
 
 # Fungsi untuk interpretasi hasil prediksi
 def interpret_prediction(probability):
-    if probability >= 0.8:
+    if probability >= 0.95:
+        return "Anda memiliki peluang sangat tinggi untuk memiliki Twin Flame. Hubungan yang sangat dalam dan bermakna mungkin sedang menanti Anda."
+    elif probability >= 0.90:
+        return "Anda memiliki peluang tinggi untuk memiliki Twin Flame. Mungkin ada tarikan spiritual yang kuat antara Anda dan seseorang yang potensial."
+    elif probability >= 0.85:
+        return "Anda memiliki peluang yang cukup tinggi untuk memiliki Twin Flame. Ada kemungkinan hubungan yang mendalam sedang dalam proses berkembang."
+    elif probability >= 0.80:
         return "Anda memiliki kemungkinan tinggi untuk memiliki Twin Flame. Ini menunjukkan bahwa Anda mungkin merasakan tarikan yang kuat secara spiritual dan emosional, serta memiliki ikatan yang mendalam dengan seseorang yang potensial menjadi Twin Flame Anda."
-    elif probability >= 0.6:
-        return "Anda memiliki kemungkinan sedang untuk memiliki Twin Flame. Meskipun tidak sekuat kemungkinan tinggi, ini menunjukkan bahwa Anda masih memiliki potensi untuk merasakan ikatan yang mendalam dengan seseorang, dan mungkin bernilai untuk menjelajahi hubungan ini lebih lanjut."
-    elif probability >= 0.4:
-        return "Anda memiliki kemungkinan rendah untuk memiliki Twin Flame. Meskipun begitu, ini tidak menutup kemungkinan untuk menemukan hubungan yang bermakna dan istimewa di masa depan. Teruslah terbuka terhadap peluang yang ada."
+    elif probability >= 0.75:
+        return "Anda memiliki kemungkinan yang cukup tinggi untuk memiliki Twin Flame. Mungkin ada koneksi emosional yang mendalam yang dapat menjadi dasar hubungan yang bermakna."
+    elif probability >= 0.70:
+        return "Anda memiliki kemungkinan yang cukup besar untuk memiliki Twin Flame. Ada potensi untuk merasakan hubungan yang lebih dalam dari sekadar hubungan biasa."
+    elif probability >= 0.65:
+        return "Anda memiliki kemungkinan moderat untuk memiliki Twin Flame. Mungkin ada ikatan khusus yang terbentuk antara Anda dan seseorang yang istimewa."
+    elif probability >= 0.60:
+        return "Anda memiliki kemungkinan sedang untuk memiliki Twin Flame. Ini menunjukkan bahwa Anda mungkin memiliki ikatan yang kuat dengan seseorang, tetapi masih perlu eksplorasi lebih lanjut untuk memastikan."
+    elif probability >= 0.55:
+        return "Anda memiliki kemungkinan moderat untuk memiliki Twin Flame. Mungkin ada hubungan yang dalam yang perlu dieksplorasi lebih lanjut."
+    elif probability >= 0.50:
+        return "Anda memiliki kemungkinan sedang untuk memiliki Twin Flame. Mungkin ada hubungan yang dalam dan bermakna dalam hidup Anda."
+    elif probability >= 0.45:
+        return "Anda memiliki kemungkinan rendah untuk memiliki Twin Flame. Namun, jangan menutup kemungkinan untuk menemukan hubungan yang istimewa di masa depan."
+    elif probability >= 0.40:
+        return "Anda memiliki kemungkinan rendah untuk memiliki Twin Flame. Namun, tetaplah terbuka terhadap kemungkinan-kemungkinan baru dalam kehidupan cinta Anda."
+    elif probability >= 0.35:
+        return "Anda memiliki kemungkinan yang cukup rendah untuk memiliki Twin Flame. Fokuslah pada pengembangan diri dan bersiaplah untuk menemukan hubungan yang bermakna di masa depan."
+    elif probability >= 0.30:
+        return "Anda memiliki kemungkinan yang cukup rendah untuk memiliki Twin Flame. Tetapi ingatlah bahwa hubungan yang bermakna bisa datang dari berbagai tempat."
+    elif probability >= 0.25:
+        return "Anda memiliki kemungkinan rendah untuk memiliki Twin Flame. Tetapi jangan ragu untuk terus mencari koneksi yang mendalam."
+    elif probability >= 0.20:
+        return "Anda memiliki kemungkinan yang rendah untuk memiliki Twin Flame. Fokuslah pada pertumbuhan pribadi dan hubungan yang sehat."
+    elif probability >= 0.15:
+        return "Anda memiliki kemungkinan sangat rendah untuk memiliki Twin Flame. Tetapi bersikaplah terbuka terhadap hubungan baru yang mungkin hadir dalam hidup Anda."
+    elif probability >= 0.10:
+        return "Anda memiliki kemungkinan sangat rendah untuk memiliki Twin Flame. Namun, percayalah bahwa cinta dapat ditemukan dalam berbagai bentuk."
+    elif probability >= 0.05:
+        return "Anda memiliki kemungkinan sangat rendah untuk memiliki Twin Flame. Tetapi jangan ragu untuk menjelajahi hubungan yang memberi Anda kebahagiaan dan kedamaian."
     else:
-        return "Anda memiliki kemungkinan sangat rendah untuk memiliki Twin Flame. Namun, ingatlah bahwa kebahagiaan dan hubungan yang memuaskan tidak hanya tergantung pada konsep Twin Flame. Tetaplah terbuka terhadap berbagai kemungkinan dan nikmati perjalanan Anda dalam mencari cinta dan hubungan yang bermakna."
+        return "Anda memiliki kemungkinan yang sangat rendah untuk memiliki Twin Flame. Ingatlah bahwa cinta dan hubungan yang bermakna dapat ditemukan di berbagai tempat."
 
 def main():
     st.title("Deteksi Kemungkinan Twin Flame")
