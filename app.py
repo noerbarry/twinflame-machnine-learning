@@ -16,9 +16,8 @@ def load_data():
     }
 
     df = pd.DataFrame(data)
-    # Menambahkan minat baru
     return df
-
+    
 # Fungsi untuk melatih model
 def train_model(df):
     X = df[['Usia', 'Jenis_Kelamin', 'Minat', 'Nilai_Pribadi', 'MBTI']]
