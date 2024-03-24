@@ -4,11 +4,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 
-# Add custom CSS to hide the Streamlit footer
+# Add custom CSS to hide the "Made in Streamlit" text in the footer
 st.markdown(
     """
     <style>
-    #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
     </style>
     """,
@@ -16,9 +15,8 @@ st.markdown(
 )
 
 # Add your app content here
-st.write("pabarstudio")
+st.write("Welcome to My Streamlit App!")
 
-  
 # Fungsi untuk memuat data tentang pengguna dan kemungkinan twin flame
 def load_data():
     data = {
