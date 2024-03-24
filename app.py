@@ -16,7 +16,7 @@ st.markdown(
 )
 
 # Add your app content here
-st.write("Welcome to My Streamlit App!")
+st.write("pabarstudio")
 
   
 # Fungsi untuk memuat data tentang pengguna dan kemungkinan twin flame
