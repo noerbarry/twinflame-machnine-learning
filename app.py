@@ -7,16 +7,16 @@ from sklearn.preprocessing import LabelEncoder
 # Fungsi untuk memuat data tentang pengguna dan kemungkinan twin flame
 def load_data():
     data = {
-    'Usia': [25, 30, 28, 35, 23, 40, 22, 27],
-    'Jenis_Kelamin': ['Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan'],
-    'Minat': ['Olahraga', 'Seni', 'Seni', 'Olahraga', 'Seni', 'Olahraga', 'Olahraga', 'Seni'],
-    'Nilai_Pribadi': ['Baik', 'Baik', 'Baik', 'Baik', 'Buruk', 'Buruk', 'Buruk', 'Baik'],
-    'MBTI': ['INFJ', 'ENTP', 'INTJ', 'INTP', 'ENFJ', 'INFP', 'ENFP', 'INTJ'],
-    'Twin_Flame': [1, 0, 1, 0, 1, 0, 1, 0]
-   }
+        'Usia': [25, 30, 28, 35, 23, 40, 22, 27],
+        'Jenis_Kelamin': ['Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan', 'Laki-laki', 'Perempuan'],
+        'Minat': ['Olahraga', 'Seni', 'Seni', 'Olahraga', 'Seni', 'Olahraga', 'Olahraga', 'Seni'],
+        'Nilai_Pribadi': ['Baik', 'Baik', 'Baik', 'Baik', 'Buruk', 'Buruk', 'Buruk', 'Baik'],
+        'MBTI': ['INFJ', 'ENTP', 'INTJ', 'INTP', 'ENFJ', 'INFP', 'ENFP', 'INTJ'],
+        'Twin_Flame': [1, 0, 1, 0, 1, 0, 1, 0]
+    }
 
-   df = pd.DataFrame(data)
-   return df
+    df = pd.DataFrame(data)
+    return df
 
 # Fungsi untuk melatih model
 def train_model(df):
