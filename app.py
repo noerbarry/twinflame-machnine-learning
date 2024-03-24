@@ -12,7 +12,7 @@ st.image("https://i0.wp.com/mindeasy.com/wp-content/uploads/2023/05/Introduction
 background = """
 <style>
 body {
-    background-image: url('path_to_your_background_image.jpg');
+    background-image: url('https://i0.wp.com/mindeasy.com/wp-content/uploads/2023/05/Introduction-to-Twin-Flames.jpg');
     background-size: cover;
 }
 </style>
